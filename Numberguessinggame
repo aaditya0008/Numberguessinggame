@@ -1,41 +1,32 @@
 import java.util.Scanner;
-import java.util.Random;
 
-public class numberguessinggame {
+public class randomnumber {
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-
-        int small_no = 1;
-        int big_no = 100;
-        int any_no = (int)(Math.random()*100);
-        int total_attempts = 5; 
-        int attempts = 0;
-        boolean rightguess = false;
-
-        System.out.println("Welcome to Number Guessing Game!");
-        System.out.println("I have chosen a number between " + small_no + " and " + big_no + ".");
-        System.out.println("You have " + total_attempts + " attempts to guess it.");
-
-        while (attempts < total_attempts) {
-            System.out.print("guess the number: ");
-            int guess = scanner.nextInt();
-            attempts++;
-
-            if (guess == any_no) {
-                System.out.println("Congratulations! You guessed the number " + any_no + " correctly with" + attempts + " score.");
-                rightguess = true;
+        // System.out.println("Enter Your Number: ");
+        int mynumber = (int) (Math.random() * 100);
+        Scanner sc = new Scanner(System.in);
+        int inputnumber = 0;
+        int count=1;
+        do {
+            
+            System.out.println("Enter your number: ");
+            inputnumber = sc.nextInt();
+            if (inputnumber == mynumber) {
+                System.out.println("Coolll...Correct Number you won with score " + count + ".");
                 break;
-            } else if (guess < any_no) {
-                System.out.println("Too low! Try again.");
+            } else if (inputnumber > mynumber) {
+                System.out.println("the given number is big Please Enter small value: ");
             } else {
-                System.out.println("Too high! Try again.");
+                System.out.println("the given number is small please enter bigger number: ");
             }
+            count++;
+
+        } while (count <= 5);
+        if(count>5){
+            System.out.println("you got 5 attempts is over " );
         }
 
-        if (!rightguess) {
-            System.out.println("Sorry, you lost. The correct number was " + any_no + ".");
-        }
+        System.out.println("You lost! The number was :" + mynumber);
 
-        scanner.close();
     }
 }
