@@ -4,12 +4,11 @@ import java.util.Random;
 public class numberguessinggame {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        Random random = new Random();
 
         int small_no = 1;
         int big_no = 100;
-        int any_no = random.nextInt(big_no - small_no + 1) + small_no;
-        int total_attempts = 5; // Number of attempts for player
+        int any_no = (int)(Math.random()*100);
+        int total_attempts = 5; 
         int attempts = 0;
         boolean rightguess = false;
 
@@ -40,4 +39,3 @@ public class numberguessinggame {
         scanner.close();
     }
 }
-
