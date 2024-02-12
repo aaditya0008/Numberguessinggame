@@ -1,0 +1,43 @@
+import java.util.Scanner;
+import java.util.Random;
+
+public class numberguessinggame {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        Random random = new Random();
+
+        int small_no = 1;
+        int big_no = 100;
+        int any_no = random.nextInt(big_no - small_no + 1) + small_no;
+        int total_attempts = 5; // Number of attempts for player
+        int attempts = 0;
+        boolean rightguess = false;
+
+        System.out.println("Welcome to Number Guessing Game!");
+        System.out.println("I have chosen a number between " + small_no + " and " + big_no + ".");
+        System.out.println("You have " + total_attempts + " attempts to guess it.");
+
+        while (attempts < total_attempts) {
+            System.out.print("guess the number: ");
+            int guess = scanner.nextInt();
+            attempts++;
+
+            if (guess == any_no) {
+                System.out.println("Congratulations! You guessed the number " + any_no + " correctly with" + attempts + " score.");
+                rightguess = true;
+                break;
+            } else if (guess < any_no) {
+                System.out.println("Too low! Try again.");
+            } else {
+                System.out.println("Too high! Try again.");
+            }
+        }
+
+        if (!rightguess) {
+            System.out.println("Sorry, you lost. The correct number was " + any_no + ".");
+        }
+
+        scanner.close();
+    }
+}
+
